@@ -1,10 +1,9 @@
 export default {
   name: 'registerPage',
   data() {
-    var passwordVadlidate = (rule, value, callback) => {
+    var passwordValidate = (rule, value, callback) => {
       if (value === '') {
-        c
-        allback(new Error('Please input the password'))
+        callback(new Error('Please input the password'))
       } else {
         if (this.formData.passwordConfirm !== '') {
           this.$refs.formData.validateField('passwordConfirm')
@@ -58,12 +57,26 @@ export default {
           }
         ],
         password: [
-          { required: true, message: 'Please input password', trigger: 'blur' },
-          { validator: passwordVadlidate, trigger: 'blur' }
+          {
+            required: true,
+            message: 'Please input password',
+            trigger: 'blur'
+          },
+          {
+            validator: passwordValidate,
+            trigger: 'blur'
+          }
         ],
         passwordConfirm: [
-          { required: true, message: 'Please input password', trigger: 'blur' },
-          { validator: confirmValidate, trigger: 'blur' }
+          {
+            required: true,
+            message: 'Please input password',
+            trigger: 'blur'
+          },
+          {
+            validator: confirmValidate,
+            trigger: 'blur'
+          }
         ]
       },
       isFormValidated: false
@@ -77,6 +90,31 @@ export default {
         const noError = !field.isRequired && field.validateState !== 'error'
         return acc && (valid || noError)
       }, true)
+    },
+    register() {
+      if (this.isFormValidated) {
+        const newUser = {
+          firstName: this.formData.firstName,
+          lastName: this.formData.lastName,
+          email: this.formData.email,
+          password: this.formData.password
+        }
+        this.$store
+          .dispatch('REGISTER', newUser)
+          .then(
+            user => this.onRegisterSuccessful(user),
+            error => this.onRegisterFailed(error)
+          )
+      }
+    },
+    onRegisterSuccessful(user) {
+      if (!user) {
+        throw new Error('Something went wrong!')
+      }
+      this.$router.push('dashboard')
+    },
+    onRegisterFailed(error) {
+      console.error(error)
     }
   }
 }
