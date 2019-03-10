@@ -49,18 +49,6 @@ const store = new Vuex.Store({
         await context.commit('SET_USER', user)
         return user
       })
-    },
-    USER: (context, payload) => {
-      return AuthService.user(payload).then(async payload => {
-        const { user, token } = payload
-        AuthService.storeToken(token)
-        AuthService.setHeader(token)
-        await context.commit('SET_TOKEN', token)
-
-        AuthService.storeUser(user)
-        await context.commit('SET_USER', user)
-        return user
-      })
     }
   }
 })

@@ -1,5 +1,5 @@
 <template>
-  <div id="dashboardPage">
+  <div id="dashboardPage" v-if="isLogIn">
     <div class="welcome">Hi {{firstName}}, Welcome to Snowcoop</div>
   </div>
 </template>

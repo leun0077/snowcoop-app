@@ -8,10 +8,15 @@
         <div class="form-body-wrapper">
           <el-form :model="formData" ref="formData" @focusout.native="updateIsFormValidated">
             <el-form-item :rules="rules.email" prop="email">
-              <el-input placeholder="Email" v-model="formData.email"></el-input>
+              <el-input placeholder="Email" v-model="formData.email" v-focus></el-input>
             </el-form-item>
             <el-form-item :rules="rules.password" prop="password">
-              <el-input type="password" placeholder="Password" v-model="formData.password" show-password></el-input>
+              <el-input
+                type="password"
+                placeholder="Password"
+                v-model="formData.password"
+                show-password
+              ></el-input>
             </el-form-item>
           </el-form>
         </div>
@@ -23,7 +28,6 @@
           </div>
           <div class="sign-in-button-wrapper">
             <button v-bind:disabled="!isFormValidated" @click="signIn">Sign In</button>
-             
           </div>
         </div>
       </el-card>

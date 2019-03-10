@@ -116,5 +116,13 @@ export default {
     onRegisterFailed(error) {
       console.error(error)
     }
+  },
+  directives: {
+    focus: {
+      // Focues first name when entering the page
+      inserted: function(el) {
+        el.firstElementChild.focus()
+      }
+    }
   }
 }

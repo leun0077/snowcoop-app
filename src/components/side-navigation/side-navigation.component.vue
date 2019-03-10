@@ -1,6 +1,6 @@
 <template>
   <div id="SideNavigation">
-    <el-menu class="side-nav-menu" :router="true" :default-active="activeLink">
+    <el-menu default-active="activeLink" class="side-nav-menu" :router="true">
       <div class="logo">
         <span>Snowcoop</span>
       </div>

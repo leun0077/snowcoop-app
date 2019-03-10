@@ -13,7 +13,7 @@
               <el-col :span="12">
                 <!-- First name -->
                 <el-form-item :rules="rules.firstName" prop="firstName">
-                  <el-input placeholder="First Name" v-model="formData.firstName" autofocus></el-input>
+                  <el-input placeholder="First Name" v-model="formData.firstName" v-focus></el-input>
                 </el-form-item>
               </el-col>
               <el-col :span="12">
