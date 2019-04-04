@@ -30,22 +30,17 @@ export default {
         passwordConfirm: null
       },
       rules: {
-        firstName: [
-          {
-            required: true,
-            message: 'Please input first name',
-            trigger: 'blur'
-          }
-        ],
-        lastName: [
-          {
-            required: true,
-            message: 'Please input last name',
-            trigger: 'blur'
-          }
-        ],
-        email: [
-          {
+        firstName: [{
+          required: true,
+          message: 'Please input first name',
+          trigger: 'blur'
+        }],
+        lastName: [{
+          required: true,
+          message: 'Please input last name',
+          trigger: 'blur'
+        }],
+        email: [{
             required: true,
             message: 'Please input email address',
             trigger: 'blur'
@@ -56,8 +51,7 @@ export default {
             trigger: ['blur', 'change']
           }
         ],
-        password: [
-          {
+        password: [{
             required: true,
             message: 'Please input password',
             trigger: 'blur'
@@ -67,8 +61,7 @@ export default {
             trigger: 'blur'
           }
         ],
-        passwordConfirm: [
-          {
+        passwordConfirm: [{
             required: true,
             message: 'Please input password',
             trigger: 'blur'
@@ -114,13 +107,14 @@ export default {
       this.$router.push('dashboard')
     },
     onRegisterFailed(error) {
+      /* eslint-disable */
       console.error(error)
     }
   },
   directives: {
     focus: {
       // Focues first name when entering the page
-      inserted: function(el) {
+      inserted: function (el) {
         el.firstElementChild.focus()
       }
     }
