@@ -26,6 +26,8 @@ Vue.use(VueGoogleMaps, {
 /* eslint-disable */
 console.log(process.env.VUE_APP_GOOGLE_API_KEY)
 
+Vue.router = router
+
 new Vue({
   router,
   store,
