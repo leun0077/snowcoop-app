@@ -35,11 +35,6 @@ const router = new VueRouter({
         requiresAuth: true
       }
     }
-    // ,
-    // {
-    //     path: '/sideNavigation',
-    //     component: sideNavigation
-    // }
   ]
 })
 

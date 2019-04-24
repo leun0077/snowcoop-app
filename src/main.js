@@ -23,8 +23,6 @@ Vue.use(VueGoogleMaps, {
     libraries: 'places'
   }
 })
-/* eslint-disable */
-console.log(process.env.VUE_APP_GOOGLE_API_KEY)
 
 Vue.router = router
 

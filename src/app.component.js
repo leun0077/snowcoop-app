@@ -1,13 +1,16 @@
-import SideNavigation from './components/side-navigation/side-navigation.component.vue';
+import dashboardPage from './components/pages/dashboard-page/dashboard-page.component.vue'
+import SideNavigation from './components/side-navigation/side-navigation.component.vue'
 
 export default {
   name: 'app',
   components: {
-    SideNavigation
+    SideNavigation,
+    dashboardPage
   },
   computed: {
-    isLogIn () {
+    isLogIn() {
+      this.$router.push('dashboard')
       return this.$store.getters.IS_LOGIN
     }
-  },
+  }
 }

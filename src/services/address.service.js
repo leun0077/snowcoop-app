@@ -1,7 +1,7 @@
 import Axios from 'axios'
 
 const AddressService = {
-  getAddressList(credentials) {
+  getAddressList() {
     return Axios.get('http://localhost:3000/address').then(async response => {
       if (response.status === 200 || response.status === 201) {
         const { payload } = response.data

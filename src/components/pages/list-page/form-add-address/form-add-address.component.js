@@ -4,26 +4,50 @@ export default {
     return {
       showForm: false,
       place: null,
-      formData: {},
-      rules: {},
-      isFormValidated: false
+      formData: {
+        street: null,
+        city: null,
+        province: null,
+        postalCode: null,
+        lat: null,
+        lng: null
+      },
+      rules: {
+        street: [{ required: true }],
+        city: [{ required: true }],
+        province: [{ required: true }],
+        postalCode: [{ required: true }],
+        lat: [{ required: true }],
+        lng: [{ required: true }]
+      },
+      isFormValidated: false,
+      addressInput: null
     }
   },
   methods: {
     submit() {
       this.$store.dispatch('ADD_ADDRESS', this.formData).then(address => {
-        this.toggleForm(false)
+        if (address) {
+          this.toggleForm(false)
+        }
       })
     },
     toggleForm(showForm) {
       this.showForm = showForm
     },
+    handleClose() {
+      this.place = null
+      this.formData.street = null
+      this.formData.city = null
+      this.formData.province = null
+      this.formData.postalCode = null
+      this.formData.lat = null
+      this.formData.lng = null
+      this.addressInput = null
+    },
     setPlace(place) {
-      /*eslint-disable */
-      console.log(place)
       const { address_components, geometry } = place
       const address = this.buildAddressData(address_components, geometry)
-      console.log(address)
 
       if (address) {
         this.place = address
@@ -41,23 +65,23 @@ export default {
       address.lng = geometry.location.lng().toString()
 
       components.forEach(component => {
-        if (component.type[0] === 'street_number') {
+        if (component.types[0] === 'street_number') {
           address.streetNumber = component.short_name
         }
 
-        if (component.type[0] === 'route') {
+        if (component.types[0] === 'route') {
           address.streetName = component.short_name
         }
 
-        if (component.type[0] === 'locality') {
+        if (component.types[0] === 'locality') {
           address.city = component.short_name
         }
 
-        if (component.type[0] === 'administrative_area_level_1') {
+        if (component.types[0] === 'administrative_area_level_1') {
           address.province = component.short_name
         }
 
-        if (component.type[0] === 'postal_code') {
+        if (component.types[0] === 'postal_code') {
           address.postalCode = component.short_name
         }
       })
