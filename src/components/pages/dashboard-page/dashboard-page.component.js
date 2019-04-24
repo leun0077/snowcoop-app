@@ -1,5 +1,7 @@
+// importing map view from another location
 import mapView from '../../shared/map-view/map-view.component.vue'
 export default {
+  // Getting map view to display
   name: 'dashboardPage',
   components: {
     mapView
@@ -9,6 +11,7 @@ export default {
       addressList: null
     }
   },
+  // making sure user is logged in with token
   computed: {
     isLogIn() {
       return this.$store.getters.IS_LOGIN

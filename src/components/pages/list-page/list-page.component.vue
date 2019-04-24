@@ -2,6 +2,7 @@
   <div id="listPage">
     <div class="list-wrapper">
       <div class="list-header">
+        <!-- showing amount of addresed Inputted -->
         <span
           class="list-title"
           v-if="addressList"

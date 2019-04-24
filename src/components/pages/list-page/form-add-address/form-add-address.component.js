@@ -1,4 +1,5 @@
 export default {
+  // form info data storing
   name: 'formAddAddress',
   data() {
     return {
@@ -25,6 +26,7 @@ export default {
     }
   },
   methods: {
+    // Submit button to add addresses
     submit() {
       this.$store.dispatch('ADD_ADDRESS', this.formData).then(address => {
         if (address) {
@@ -58,6 +60,7 @@ export default {
         this.formData.lat = address.lat
         this.formData.lng = address.lng
       }
+      // finds and autofills map location
     },
     buildAddressData(components, geometry) {
       const address = {}

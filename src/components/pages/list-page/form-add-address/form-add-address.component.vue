@@ -13,21 +13,27 @@
               ></gmap-autocomplete>
             </el-form-item>
             <div v-if="place">
+              <!-- getting Street info -->
               <el-form-item :rules="rules.street" prop="street">
                 <el-input v-model="formData.street" :disabled="true"></el-input>
               </el-form-item>
+              <!-- getting city info -->
               <el-form-item :rules="rules.city" prop="city">
                 <el-input v-model="formData.city" :disabled="true"></el-input>
               </el-form-item>
+              <!-- getting province info -->
               <el-form-item :rules="rules.province" prop="province">
                 <el-input v-model="formData.province" :disabled="true"></el-input>
               </el-form-item>
+              <!-- getting postal code info -->
               <el-form-item :rules="rules.postalCode" prop="postalCode">
                 <el-input v-model="formData.postalCode" :disabled="true"></el-input>
               </el-form-item>
+              <!-- getting lat info -->
               <el-form-item :rules="rules.lat" prop="lat">
                 <el-input v-model="formData.lat" :disabled="true"></el-input>
               </el-form-item>
+              <!-- getting long info -->
               <el-form-item :rules="rules.lng" prop="lng">
                 <el-input v-model="formData.lng" :disabled="true"></el-input>
               </el-form-item>
